@@ -18,7 +18,7 @@ extern void __SDL2_OpenLibError(ULONG version, const char *name);
 #if defined(__NO_SDL_CONSTRUCTORS)
 extern struct Library *SDL2GfxBase;
 #else
-void _INIT_4_SDL2GfxBase(void) __attribute__((alias("__CSTP_init_SDL2GfxBase")));
+int _INIT_4_SDL2GfxBase(void) __attribute__((alias("__CSTP_init_SDL2GfxBase")));
 void _EXIT_4_SDL2GfxBase(void) __attribute__((alias("__DSTP_cleanup_SDL2GfxBase")));
 
 struct Library *SDL2GfxBase;

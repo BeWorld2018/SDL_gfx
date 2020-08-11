@@ -1,0 +1,25 @@
+# Makefile to build the MorphOS SDL2_gfx tests
+
+AR = ppc-morphos-ar
+CC	= ppc-morphos-gcc-9
+CFLAGS	= -noixemul -O2 -Wall -g -I../ -I../../SDL-mos-2.0.12-ogl/include
+LIBS = -L. -lSDL2test -L../../SDL-mos-2.0.12-ogl/test -lSDL2 -noixemul -lm -lSDL2_gfx
+
+TARGETS = testframerate testgfx testimagefilter testrotozoom	
+
+all: $(TARGETS)
+
+testframerate: testframerate.o
+	$(CC) -o $@ $^ $(LIBS)
+
+testgfx: testgfx.o
+	$(CC) -o $@ $^ $(LIBS)
+
+testimagefilter: testimagefilter.o
+	$(CC) -o $@ $^ $(LIBS)
+
+testrotozoom: testrotozoom.o
+	$(CC) -o $@ $^ $(LIBS)
+
+clean:
+	rm -f $(TARGETS) *.o $(COBJS) $(TESTLIB)
