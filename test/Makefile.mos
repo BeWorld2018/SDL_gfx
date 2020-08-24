@@ -2,24 +2,24 @@
 
 AR = ppc-morphos-ar
 CC	= ppc-morphos-gcc-9
-CFLAGS	= -noixemul -O2 -Wall -g -I../ -I../../SDL-mos-2.0.12-ogl/include
-LIBS = -L. -lSDL2test -L../../SDL-mos-2.0.12-ogl/test -lSDL2 -noixemul -lm -lSDL2_gfx
-
+CFLAGS	= -noixemul -O2 -Wall -I/usr/local/include/SDL2
+LIBS =  -lSDL2_gfx -lSDL2 -noixemul -lm -lc -L/usr/local/lib
+LIBS_TEST = -lSDL2test -L../../SDL-mos-2.0.12-ogl/test
 TARGETS = testframerate testgfx testimagefilter testrotozoom	
 
 all: $(TARGETS)
 
 testframerate: testframerate.o
-	$(CC) -o $@ $^ $(LIBS)
+	$(CC) -o $@ $^ $(LIBS_TEST) $(LIBS)
 
 testgfx: testgfx.o
-	$(CC) -o $@ $^ $(LIBS)
+	$(CC) -o $@ $^ $(LIBS_TEST) $(LIBS)
 
 testimagefilter: testimagefilter.o
 	$(CC) -o $@ $^ $(LIBS)
 
 testrotozoom: testrotozoom.o
-	$(CC) -o $@ $^ $(LIBS)
+	$(CC) -o $@ $^ $(LIBS_TEST) $(LIBS)
 
 clean:
 	rm -f $(TARGETS) *.o $(COBJS) $(TESTLIB)
