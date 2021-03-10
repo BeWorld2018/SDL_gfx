@@ -1,7 +1,7 @@
 # Makefile to build the SDL2_GFX library
 
 CDEFS   = -DAROS_ALMOST_COMPATIBLE -DUSE_INLINE_STDARG -D__MORPHOS_SHAREDLIBS -D_NO_PPCINLINE
-CC      = ppc-morphos-gcc-9 -noixemul 
+CC      = ppc-morphos-gcc-10 -noixemul 
 
 INCLUDE = -I/usr/local/include/SDL2
 CFLAGS  = -mcpu=750 -O2 $(INCLUDE) -mresident32 -Wall -Wno-pointer-sign -fno-strict-aliasing -ffast-math $(CDEFS)
@@ -58,7 +58,7 @@ headers:
 	
 install: $(LIBRARY)
 	@cp $(LIBRARY) LIBS:
-	-flushlib $(LIBRARY)
+	flushlib $(LIBRARY)
 
 MorphOS/GFX_library.o: MorphOS/GFX_library.c MorphOS/GFX_library.h MorphOS/GFX_stubs.h
 	$(COMPILING)
