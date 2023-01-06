@@ -23,7 +23,7 @@ void _EXIT_4_SDL2GfxBase(void) __attribute__((alias("__DSTP_cleanup_SDL2GfxBase"
 
 struct Library *SDL2GfxBase;
 
-static CONSTRUCTOR_P(init_SDL2GfxBase, 100)
+static CONSTRUCTOR_P(init_SDL2GfxBase, 101)
 {
 	static const char libname[] = "sdl2_gfx.library";
 	struct Library *base = OpenLibrary((STRPTR)libname, VERSION);
@@ -37,8 +37,9 @@ static CONSTRUCTOR_P(init_SDL2GfxBase, 100)
 	return (base == NULL);
 }
 
-static DESTRUCTOR_P(cleanup_SDL2GfxBase, 100)
+static DESTRUCTOR_P(cleanup_SDL2GfxBase, 101)
 {
 	CloseLibrary(SDL2GfxBase);
+	SDL2GfxBase = NULL;
 }
 #endif

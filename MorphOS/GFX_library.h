@@ -21,12 +21,6 @@
 #define __TEXTSEGMENT__
 #endif
 
-struct CTDT
-{
-	int	(*fp)(void);
-	long	priority;
-};
-
 struct HunkSegment
 {
 	unsigned int Size;
@@ -60,8 +54,6 @@ struct SDL2GfxLibrary
 	// library management
 
 	struct SignalSemaphore Semaphore;
-	APTR ctdtlist;
-	APTR last_ctdt;
 };
 
 #endif /* SDL2_GFX_LIBRARY_H */
